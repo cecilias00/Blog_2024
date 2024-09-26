@@ -20,10 +20,10 @@ def index(request):
 <h1> Hola mundo!  </h1/>
 <p>Esto es párrafo </p>
 <ul>
-    <li>1. Hola Cecilia</li>
-    <li>2. Hola Cecilia</li>
-    <li>3. Hola Cecilia</li>
-    <li>4. Hola Cecilia</li>
+    <li>1.  </li>
+    <li>2.  </li>
+    <li>3.  </li>
+    <li>4.  </li>
 
 </ul>
 </body>

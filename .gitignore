@@ -1,6 +1,6 @@
 #no subir a repositorio: env, archivos media, keys, debugs, bd
 env
 db.sqlite3
-settings1
+local.py
 media
 asd.html
