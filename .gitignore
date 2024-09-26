@@ -1,3 +1,5 @@
-#ignorar archivos para no subir a nuestro repositorio: env, archivos media, keys, debugs, bd
+#no subir a repositorio: env, archivos media, keys, debugs, bd
 db.sqlite3
 env
+Settings
+asd.html
