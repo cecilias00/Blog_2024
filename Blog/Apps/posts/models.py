@@ -5,17 +5,17 @@ from django.contrib.auth.models import AbstractUser, User
 # Create your models here.
 
 
-# # usuarios con atributos nuevos
-# class User(AbstractUser):
-#     icono = models.ImageField(upload_to="media/usuarios", null=True, blank=True)
-#     descripcion = models.TextField(max_length=350)
+# usuarios con atributos nuevos
+class User(AbstractUser):
+    icono = models.ImageField(upload_to="media/usuarios", null=True, blank=True)
+    descripcion = models.TextField(max_length=350)
 
-#     def __str__(self):
-#         return self.username
+    def __str__(self):
+        return self.username
 
-#     class Meta:
-#         verbose_name = "Usuario"
-#         verbose_name_plural = "Usuarios"
+    class Meta:
+        verbose_name = "Usuario"
+        verbose_name_plural = "Usuarios"
 
 
 class Categorias(models.Model):  # nombreapp_nombreclase
@@ -38,7 +38,7 @@ class Posts(models.Model):  # nombreapp_nombreclase
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
-    # imagen = models.ImageField(upload_to="media/posts", null=True, blank=True)
+    imagen = models.ImageField(upload_to="media/posts", null=True, blank=True)
 
     class Meta:
         db_table = "Posts"
@@ -49,6 +49,7 @@ class Posts(models.Model):  # nombreapp_nombreclase
         return self.titulo
 
 
+# Con esta forma sólo puedo cargar una imagen
 # class Imagenes(models.Model):
 #     imagen = models.ImageField(upload_to="/media/Posts")
 #     post = models.ForeignKey(Posts, on_delete=models.CASCADE)
@@ -61,11 +62,11 @@ class Comentarios(models.Model):
     post = models.ForeignKey(Posts, on_delete=models.CASCADE)
 
 
-    class Meta:
-        db_table = "Comentarios"  
-        verbose_name = "Comentario"  
-        verbose_name_plural = "Comentarios"  
-        ordering = ['fecha_publicacion'] 
+    # class Meta:
+    #     db_table = "Comentarios"  
+    #     verbose_name = "Comentario"  
+    #     verbose_name_plural = "Comentarios"  
+    #     ordering = ['fecha_publicacion'] 
 
-    def __str__(self):
-        return f'Comentario de {self.autor} en {self.post.titulo}'
+    # def __str__(self):
+    #     return f'Comentario de {self.autor} en {self.post.titulo}'

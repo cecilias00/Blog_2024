@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Posts, Categorias, Comentarios
+from .models import Posts, Categorias, Comentarios, User
 from unidecode import unidecode
 from django.db.models import Q
 
@@ -33,3 +33,4 @@ class PostsAdmin(admin.ModelAdmin):
 admin.site.register(Posts, PostsAdmin)
 admin.site.register(Categorias)
 admin.site.register(Comentarios)
+admin.site.register(User)
