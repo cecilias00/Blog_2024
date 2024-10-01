@@ -9,19 +9,19 @@ class PostsAdmin(admin.ModelAdmin):
     list_filter = ("fecha_publicacion",)
 
     def get_search_results(self, request, queryset, search_term):
-        # Normalizar el término de búsqueda
+
         search_term_normalized = unidecode(search_term).strip().lower()
 
-        # Realizar la búsqueda en el queryset original
+
         queryset, use_distinct = super().get_search_results(request, queryset, search_term)
 
-        # Filtrar resultados con acentos
+
         queryset |= self.model.objects.filter(
             Q(titulo__icontains=search_term) |
             Q(categoria__nombre__icontains=search_term)
         )
 
-        # Filtrar resultados sin acentos
+        # filtra resultados sin acentos
         queryset |= self.model.objects.filter(
             Q(titulo__icontains=search_term_normalized) |
             Q(categoria__nombre__icontains=search_term_normalized)
