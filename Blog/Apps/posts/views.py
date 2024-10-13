@@ -11,6 +11,13 @@ def posts(request):
     # print(noticias)
     return render(request, "posts/posts.html", ctx)
 
+def post_id(request, id):
+    ctx = {}
+    noticia = Posts.objects.get(id=id)
+    comentarios = Comentarios.objects.filter(post=noticia)
+    ctx["noticia"] = noticia
+    ctx["comentarios"] = comentarios
+    return render(request, "posts/detalle.html", ctx)
 
 def about_us(request):
     return render(request, "posts/about_us.html")

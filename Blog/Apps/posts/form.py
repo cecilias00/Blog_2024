@@ -23,11 +23,12 @@ class RegistroForm(UserCreationForm):
     password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={"class": "form-control"}), required=True
     )
-    # icono = forms.ImageField(
-    #     label="Imagen de perfil",
-    #     required=False,
-    #     widget=forms.FileInput(attrs={"class": "form-control form-control-lg"}),
-    # )
+  
+    icono = forms.ImageField(
+        label="Imagen de perfil",
+        required=False,
+        widget=forms.FileInput(attrs={"class": "form-control form-control-lg"}),
+    )
 
     class Meta:
         model = User
@@ -36,6 +37,7 @@ class RegistroForm(UserCreationForm):
             "email",
             "password1",
             "password2",
+            "icono"
         ]
         # widget = {
         #     "username": forms.Textarea(attrs={"class": "form-control"}),
