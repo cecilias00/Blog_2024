@@ -25,7 +25,6 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 
 from django.urls import reverse_lazy
 
-#Creamos el formulario(form.py) y acá lo renderizamos donde queremos que aparezca
 
 class Registro(CreateView):
     form_class = RegistroForm
