@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e6e1e1; /* Gris claro */
+            color: #333; /* Texto oscuro */
+        }
+        h1 {
+            color: #4a4a4a; /* Gris oscuro para el título */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+        nav {
+            background-color: #6b8e23; /* Verde musgo */
+            padding: 20px;
+            text-align: center; /* Centrar el contenido */
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Eliminar márgenes */
+        }
+        nav li {
+            display: inline; /* Mostrar los elementos en línea */
+            margin: 0 50px; /* Aumentar el espacio a los lados */
+        }
+        nav a {
+            color: #ffffff; /* Texto blanco para los enlaces */
+            text-decoration: none;
+            font-size: 30px; /* Aumentar el tamaño de la fuente */
+        }
+        nav a:hover {
+            text-decoration: underline;
+            color: #98fb98; /* Verde claro al pasar el mouse */
+        }
+        form {
+            background-color: #ffffff; /* Fondo blanco para el formulario */
+            padding: 20px;
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            margin-top: 20px; /* Espacio superior para el formulario */
+        }
+        button {
+            background-color: #3cb371; /* Verde mar para el botón */
+            color: #ffffff; /* Texto blanco en el botón */
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px; /* Tamaño de fuente del botón */
+            border-radius: 5px; /* Bordes redondeados para el botón */
+            transition: background-color 0.3s; /* Transición suave */
+        }
+        button:hover {
+            background-color: #2e8b57; /* Verde mar más oscuro al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'noticias' %}">Noticias</a></li>
+            <li><a href="{% url 'registro' %}">Registro</a></li>
+            <li><a href="{% url 'aboutus' %}">About us</a></li>
+        </ul>
+    </nav>
+
+    <h1>Registro de usuarios</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
+

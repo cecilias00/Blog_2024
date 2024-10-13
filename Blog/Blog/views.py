@@ -17,7 +17,7 @@ def index(request):
     <title>Document</title>
 </head>
 <body>
-<h1> Hola mundo!  </h1/>
+<h1> NOTICIAS NOTICIAS  </h1/>
 <p>Esto es párrafo </p>
 <ul>
     <li>1.  </li>
