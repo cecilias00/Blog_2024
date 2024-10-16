@@ -1,0 +1,143 @@
+/* Estilos existentes */
+body {
+    background-color: rgb(255, 255, 255); /* Color de fondo */
+    color: rgb(49, 48, 48); /* Color del texto */
+    margin: 0; /* Elimina márgenes del body */
+    padding: 20px; /* Añade padding global */
+    font-family: 'Poppins', sans-serif; /* Tipografía */
+}
+
+header {
+    color: rgb(118, 109, 109); /* Color del texto del encabezado */
+    padding: 15px; /* Relleno del encabezado */
+}
+
+.navbar {
+    display: flex; /* Uso de flexbox para la barra de navegación */
+    justify-content: space-around; /* Espacio uniforme entre los elementos */
+    list-style: none; /* Sin viñetas */
+}
+
+.logo {
+    width: 120px; /* Ancho de la imagen del logo */
+    height: 60px; /* Altura de la imagen del logo */
+    object-fit: cover; /* Ajuste de la imagen */
+}
+
+.img-detalle {
+    margin: 15%; /* Margen alrededor de imágenes de detalle */
+}
+
+.img-perfil {
+    width: 200px; /* Ancho de la imagen del perfil */
+}
+
+/* Nuevos estilos para la página */
+.hero {
+    background-image: url('{% static "img/fondo_inicio.png" %}'); /* Imagen de fondo */
+    background-size: cover; /* Cubrir todo el contenedor */
+    color: rgb(87, 91, 88); /* Color del texto */
+    text-align: center; /* Alinear texto al centro */
+    padding: 50px 0; /* Relleno superior e inferior */
+}
+
+.featured-news {
+    padding: 20px; /* Relleno para la sección de noticias destacadas */
+    background-color: rgb(194, 200, 194); /* Fondo blanco para el contenido */
+    border-radius: 8px; /* Bordes redondeados */
+    color: black; /* Color del texto */
+}
+
+.post-container {
+    display: grid; /* Uso de grid para los artículos */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 10px; /* Espacio entre tarjetas */
+    margin: 20px auto; /* Margen centrado */
+    max-width: 1200px; /* Ancho máximo opcional */
+    padding: 20px; /* Espacio interno */
+}
+
+.post-card {
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Ocultar desbordamiento */
+    padding: 15px; /* Relleno */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra ligera */
+    margin: 10px 0; /* Margen vertical para cada tarjeta */
+}
+
+.post-card img {
+    width: 100%; /* Ancho completo */
+    height: auto; /* Altura automática */
+}
+
+.post-footer {
+    display: flex; /* Uso de flexbox para pie de artículo */
+    justify-content: space-between; /* Espacio entre elementos */
+    margin-top: 10px; /* Margen superior */
+}
+
+.social-links, .environment-links {
+    display: flex; /* Uso de flexbox */
+    justify-content: center; /* Centrar contenido */
+    gap: 15px; 
+    margin-top: 5px; 
+}
+
+.logout-button {
+    background-color: #a9b2a8; 
+    color: white; 
+    border: none; 
+    border-radius: 7px; 
+    padding: 7px 12px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.logout-button:hover {
+    background-color: #6ef242; 
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between; /* Espacia el título y el botón */
+    align-items: center; /* Centra verticalmente */
+}
+
+.btn-nuevo-post {
+    margin-left: 20px; /* Espacio a la izquierda del botón */
+    display: inline-block;
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.btn-nuevo-post:hover {
+    background-color: #45a049; /* Color más oscuro al pasar el mouse */
+}
+
+.btn-eliminar-post {
+    background-color: #d9534f; /* Color rojo */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-eliminar-post:hover {
+    background-color: #c9302c; /* Color más oscuro al pasar el ratón */
+}
+
+/* Agregar padding a los enlaces de redes sociales */
+footer .contenedor_redes {
+    padding: 20px; /* Espacio alrededor de los íconos de redes sociales */
+    display: flex;
+    justify-content: center; /* Centrar contenido */
+    gap: 15px; /* Espacio entre íconos */
+}
+

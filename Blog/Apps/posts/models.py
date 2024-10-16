@@ -59,14 +59,15 @@ class Comentarios(models.Model):
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
     contenido = models.TextField(max_length=250, verbose_name="Contenido")
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+    post = models.ForeignKey(Posts, related_name='comentarios', on_delete=models.CASCADE)
 
 
-    # class Meta:
-    #     db_table = "Comentarios"  
-    #     verbose_name = "Comentario"  
-    #     verbose_name_plural = "Comentarios"  
-    #     ordering = ['fecha_publicacion'] 
 
-    # def __str__(self):
-    #     return f'Comentario de {self.autor} en {self.post.titulo}'
+    class Meta:
+        db_table = "Comentarios"  
+        verbose_name = "Comentario"  
+        verbose_name_plural = "Comentarios"  
+        ordering = ['fecha_publicacion'] 
+
+    def __str__(self):
+        return f'Comentario de {self.autor} en {self.post.titulo}'
