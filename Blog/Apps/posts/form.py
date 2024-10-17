@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Comentarios  # Asegúrate de que el modelo Comentarios esté importado
+from .models import Comentarios  
 from django.contrib.auth.models import User
 from .models import Posts
+
 
 class RegistroForm(UserCreationForm):
     username = forms.CharField(
@@ -59,13 +60,13 @@ class LoginForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
-        fields = ['titulo', 'contenido', 'imagen', 'categoria', 'autor']  # Asegúrate de incluir los campos que necesitas
+        fields = ['titulo', 'contenido', 'imagen', 'categoria', 'autor']  
 
 
 class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentarios
-        fields = ['contenido']  # Cambia 'contenido' al nombre de tu campo
+        fields = ['contenido']  
         widgets = {
             'contenido': forms.Textarea(attrs={'placeholder': 'Escribe tu comentario aquí...', 'class': 'form-control'}),
         }

@@ -18,7 +18,7 @@ class User(AbstractUser):
         verbose_name_plural = "Usuarios"
 
 
-class Categorias(models.Model):  # nombreapp_nombreclase
+class Categorias(models.Model): 
     nombre = models.CharField(max_length=100)
 
     def __str__(self):
@@ -30,7 +30,7 @@ class Categorias(models.Model):  # nombreapp_nombreclase
         verbose_name_plural = "Categorias"
 
 
-class Posts(models.Model):  # nombreapp_nombreclase
+class Posts(models.Model):  
     titulo = models.CharField(
         max_length=250, null=False, blank=False, verbose_name="Titulo"
     )

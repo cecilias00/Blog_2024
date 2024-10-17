@@ -1,86 +1,85 @@
 /* Estilos existentes */
 body {
-    background-color: rgb(255, 255, 255); /* Color de fondo */
-    color: rgb(49, 48, 48); /* Color del texto */
-    margin: 0; /* Elimina márgenes del body */
-    padding: 20px; /* Añade padding global */
-    font-family: 'Poppins', sans-serif; /* Tipografía */
+    background-color: rgb(255, 255, 255); 
+    color: rgb(49, 48, 48); 
+    margin: 0; 
+    padding: 25px; 
+    font-family: 'Poppins', sans-serif; 
 }
 
 header {
-    color: rgb(118, 109, 109); /* Color del texto del encabezado */
-    padding: 15px; /* Relleno del encabezado */
+    color: rgb(118, 109, 109); 
+    padding: 15px; 
 }
 
 .navbar {
-    display: flex; /* Uso de flexbox para la barra de navegación */
-    justify-content: space-around; /* Espacio uniforme entre los elementos */
-    list-style: none; /* Sin viñetas */
+    display: flex; 
+    justify-content: space-around; 
+    list-style: none; 
 }
 
 .logo {
-    width: 120px; /* Ancho de la imagen del logo */
-    height: 60px; /* Altura de la imagen del logo */
-    object-fit: cover; /* Ajuste de la imagen */
+    width: 120px; 
+    height: 60px; 
+    object-fit: cover; 
 }
 
 .img-detalle {
-    margin: 15%; /* Margen alrededor de imágenes de detalle */
+    margin: 15%; 
 }
 
 .img-perfil {
-    width: 200px; /* Ancho de la imagen del perfil */
+    width: 200px; 
 }
 
-/* Nuevos estilos para la página */
 .hero {
-    background-image: url('{% static "img/fondo_inicio.png" %}'); /* Imagen de fondo */
-    background-size: cover; /* Cubrir todo el contenedor */
-    color: rgb(87, 91, 88); /* Color del texto */
-    text-align: center; /* Alinear texto al centro */
-    padding: 50px 0; /* Relleno superior e inferior */
+    background-image: url('{% static "img/fondo_inicio.png" %}'); 
+    background-size: cover; 
+    color: rgb(87, 91, 88); 
+    text-align: center; 
+    padding: 50px 0; 
 }
 
 .featured-news {
-    padding: 20px; /* Relleno para la sección de noticias destacadas */
-    background-color: rgb(194, 200, 194); /* Fondo blanco para el contenido */
-    border-radius: 8px; /* Bordes redondeados */
-    color: black; /* Color del texto */
+    padding: 20px; 
+    background-color: rgb(194, 200, 194); 
+    border-radius: 8px; 
+    color: black; 
 }
 
 .post-container {
-    display: grid; /* Uso de grid para los artículos */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas responsivas */
-    gap: 10px; /* Espacio entre tarjetas */
-    margin: 20px auto; /* Margen centrado */
-    max-width: 1200px; /* Ancho máximo opcional */
-    padding: 20px; /* Espacio interno */
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 10px; 
+    margin: 20px auto; 
+    max-width: 1200px; 
+    padding: 20px; 
 }
 
 .post-card {
-    border: 1px solid #ddd; /* Borde gris claro */
-    border-radius: 8px; /* Bordes redondeados */
-    overflow: hidden; /* Ocultar desbordamiento */
-    padding: 15px; /* Relleno */
-    background-color: #fff; /* Fondo blanco */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra ligera */
-    margin: 10px 0; /* Margen vertical para cada tarjeta */
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    padding: 15px; 
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    margin: 10px 0; 
 }
 
 .post-card img {
-    width: 100%; /* Ancho completo */
-    height: auto; /* Altura automática */
+    width: 100%; 
+    height: auto; 
 }
 
 .post-footer {
-    display: flex; /* Uso de flexbox para pie de artículo */
-    justify-content: space-between; /* Espacio entre elementos */
-    margin-top: 10px; /* Margen superior */
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 10px;
 }
 
 .social-links, .environment-links {
-    display: flex; /* Uso de flexbox */
-    justify-content: center; /* Centrar contenido */
+    display: flex; 
+    justify-content: center;
     gap: 15px; 
     margin-top: 5px; 
 }
@@ -101,27 +100,32 @@ header {
 
 .header-section {
     display: flex;
-    justify-content: space-between; /* Espacia el título y el botón */
-    align-items: center; /* Centra verticalmente */
+    justify-content: space-between; 
+    align-items: center; 
 }
 
 .btn-nuevo-post {
-    margin-left: 20px; /* Espacio a la izquierda del botón */
+    margin-left: 20px; 
     display: inline-block;
-    background-color: #4CAF50; /* Color verde */
+    background-color: #007BFF; 
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px; 
     text-align: center;
     text-decoration: none;
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 5px; 
+    border: none; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-size: 16px; 
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 .btn-nuevo-post:hover {
-    background-color: #45a049; /* Color más oscuro al pasar el mouse */
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
 }
 
 .btn-eliminar-post {
-    background-color: #d9534f; /* Color rojo */
+    background-color: #d9534f; 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -130,14 +134,13 @@ header {
 }
 
 .btn-eliminar-post:hover {
-    background-color: #c9302c; /* Color más oscuro al pasar el ratón */
+    background-color: #c9302c; 
 }
 
-/* Agregar padding a los enlaces de redes sociales */
 footer .contenedor_redes {
-    padding: 20px; /* Espacio alrededor de los íconos de redes sociales */
+    padding: 20px; 
     display: flex;
-    justify-content: center; /* Centrar contenido */
-    gap: 15px; /* Espacio entre íconos */
+    justify-content: left; 
+    gap: 15px; 
 }
 

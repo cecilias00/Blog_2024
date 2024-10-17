@@ -1,43 +1,55 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Posts, User, Comentarios
-from django.contrib.auth.decorators import login_required
-from .models import Posts, Comentarios  # Asegúrate de que tus modelos estén correctamente importados
-from django import forms
-from .form import RegistroForm
-from django.views.generic import CreateView, UpdateView, DeleteView # Importa CreateView
+from .models import Posts, Comentarios
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .form import RegistroForm, ComentarioForm, PostForm, LoginForm
+from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from .form import RegistroForm, ComentarioForm
-from .form import LoginForm
+
+def es_staff(user):
+    """Verifica si el usuario tiene permisos de staff."""
+    return user.is_staff
 
 def posts(request):
-    ctx = {}
     noticias = Posts.objects.all()
-    ctx["noticias"] = noticias
-    return render(request, "posts/posts.html", ctx)
+    return render(request, "posts/posts.html", {"noticias": noticias})
 
-@login_required  # Asegúrate de que solo usuarios autenticados puedan comentar
 def post_id(request, id):
     post = get_object_or_404(Posts, id=id)
     comentarios = Comentarios.objects.filter(post=post)
+    form = ComentarioForm()
 
+    return render(request, 'posts/postindividual.html', {
+        'post': post,
+        'comentarios': comentarios,
+        'form': form,
+    })
+
+@login_required
+def agregar_comentario(request, post_id):
+    post = get_object_or_404(Posts, id=post_id)
     if request.method == 'POST':
         form = ComentarioForm(request.POST)
         if form.is_valid():
             comentario = form.save(commit=False)
-            comentario.post = post  # Asocia el comentario al post
-            comentario.autor = request.user  # Asocia el comentario al usuario autenticado
+            comentario.post = post
+            comentario.autor = request.user
             comentario.save()
-            return redirect('postindividual', id=post.id)  # Redirige después de guardar
+            return redirect('postindividual', id=post.id)  
     else:
         form = ComentarioForm()
 
-    ctx = {
-        'post': post,
-        'comentarios': comentarios,
-        'form': form,
-    }
+    return render(request, 'posts/postindividual.html', {'post': post, 'form': form})
 
-    return render(request, "posts/postindividual.html", ctx)
+@login_required
+def eliminar_comentario(request, comentario_id):
+    comentario = get_object_or_404(Comentarios, id=comentario_id)
+ 
+    if request.user == comentario.autor or request.user.is_staff:
+        if request.method == "POST":
+            comentario.delete()
+            return redirect('postindividual', id=comentario.post.id)  
+
+    return render(request, 'posts/postindividual.html', {'post': comentario.post})
 
 def about_us(request):
     return render(request, "posts/quienessomos.html")
@@ -54,7 +66,7 @@ def login_view(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            # Lógica de autenticación aquí
+           
             pass
     else:
         form = LoginForm()
@@ -64,28 +76,28 @@ def login_view(request):
 def contactanos_view(request):
     return render(request, 'posts/contactanos.html')
 
-
-from .form import PostForm
-
-@login_required  # Asegúrate de que solo los usuarios autenticados puedan agregar posts
+@login_required
+@user_passes_test(es_staff) 
 def nuevo_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)  # request.FILES para manejar imágenes
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.autor = request.user  # Asigna el autor como el usuario que está logueado
+            post.autor = request.user
             post.save()
-            return redirect('noticias')  # Redirige a la lista de noticias después de agregar
+            return redirect('noticias')
     else:
         form = PostForm()
-    
+
     return render(request, 'posts/nuevo_post.html', {'form': form})
 
-
-@login_required 
+@login_required
+@user_passes_test(es_staff)  
 def eliminar_post(request, id):
     post = get_object_or_404(Posts, id=id)
     if request.method == "POST":
         post.delete()
-        return redirect('noticias')  # Redirige a la lista de noticias después de eliminar
+        return redirect('noticias')
+
     return render(request, "posts/postindividual.html", {'post': post})
+
